@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import { SafeAreaView, StatusBar, FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
+import React, { useState, useContext } from "react";
+import { FlatList, View } from "react-native";
 import styled from "styled-components/native";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
 import RestaurantInfoCard from "../components/restaurant-info-card.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utils/safe-area.component";
+import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
+import { Search } from "../components/search.component";
 
 const isAndroid = Platform.OS === "android";
-
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -19,33 +17,32 @@ const RestaurantList = styled(FlatList).attrs({
   },
 })``;
 
+const Loading = styled(ActivityIndicator)`
+  margin-left: -25px;
+`;
+
+const LoadingContainer = styled.View`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+`;
+
 export default function RestaurantsScreen() {
-  const [searchQuery, setSearchQuery] = useState("");
-  console.log(searchQuery);
+  const { isLoading, error, restaurants } = useContext(RestaurantContext);
   return (
     <SafeArea>
-      <SearchContainer>
-        <Searchbar
-          mode="bar"
-          placeholder="Search"
-          elevation={3}
-          onChangeText={setSearchQuery}
-          value={searchQuery}
-        />
-      </SearchContainer>
+      {isLoading && (
+        <LoadingContainer>
+          <Loading size={50} animating={true} color={MD2Colors.blue300} />
+        </LoadingContainer>
+      )}
+      <Search />
       <RestaurantList
-        data={[
-          { name: 1 },
-          { name: 2 },
-          { name: 3 },
-          { name: 4 },
-          { name: 5 },
-          { name: 6 },
-        ]}
-        renderItem={() => (
+        data={restaurants}
+        renderItem={({ item }) => (
           <>
             <Spacer position="bottom" size="large">
-              <RestaurantInfoCard />
+              <RestaurantInfoCard restaurant={item} />
             </Spacer>
           </>
         )}
