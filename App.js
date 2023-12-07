@@ -5,35 +5,12 @@ import {
   useFonts as useOswald,
 } from "@expo-google-fonts/oswald";
 import { Lato_400Regular, useFonts as useLato } from "@expo-google-fonts/lato";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
 
 import { theme } from "./src/infrastructure/theme";
-import RestaurantsScreen from "./src/features/resturants/screens/restaurants.screen";
-import MapScreen from "./src/features/resturants/screens/map.screen";
-import SettingsScreen from "./src/features/resturants/screens/settings.screen";
 import { RestaurantContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
-const Tab = createBottomTabNavigator();
-
-const TAB_ICON = {
-  Restaurants: "restaurant",
-  Map: "map",
-  Settings: "settings",
-};
-
-const createScreenOptions = ({ route }) => {
-  const activeIconName = TAB_ICON[route.name];
-
-  return {
-    tabBarIcon: ({ color, size }) => {
-      return <Ionicons name={activeIconName} size={size} color={color} />;
-    },
-    tabBarActiveTintColor: "tomato",
-    tabBarInactiveTintColor: "gray",
-  };
-};
+import { FavouritesConextProvider } from "./src/services/favourites/favourites.context";
+import { Navigation } from "./src/infrastructure/navigation";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -49,17 +26,13 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <RestaurantContextProvider>
-            <NavigationContainer>
-              <Tab.Navigator screenOptions={createScreenOptions}>
-                <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-                <Tab.Screen name="Map" component={MapScreen} />
-                <Tab.Screen name="Settings" component={SettingsScreen} />
-              </Tab.Navigator>
-            </NavigationContainer>
-          </RestaurantContextProvider>
-        </LocationContextProvider>
+        <FavouritesConextProvider>
+          <LocationContextProvider>
+            <RestaurantContextProvider>
+              <Navigation />
+            </RestaurantContextProvider>
+          </LocationContextProvider>
+        </FavouritesConextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
