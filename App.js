@@ -6,10 +6,9 @@ import {
   useFonts as useOswald,
 } from "@expo-google-fonts/oswald";
 import { Lato_400Regular, useFonts as useLato } from "@expo-google-fonts/lato";
-// import * as firebaseApp from "firebase/app";
-// import * as firebaseAuth from "firebase/auth";
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
+import { initializeApp } from "firebase/app";
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 
 import { theme } from "./src/infrastructure/theme";
 
@@ -25,9 +24,10 @@ const firebaseConfig = {
   appId: "1:628252479180:web:e77cb92f0a7bdfc5c7fc69",
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+const app = initializeApp(firebaseConfig);
+initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+});
 
 export default function App() {
   const [oswaldLoaded] = useOswald({

@@ -32,7 +32,6 @@ export default function RestaurantInfoCard({ restaurant = {} }) {
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
-
   return (
     <RestaurantCard elevation={5}>
       <Favourite restaurant={restaurant} />
