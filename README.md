@@ -6,7 +6,7 @@ Welcome to the Meals To Go App repository! This mobile app allows users to explo
 
 1. [Getting Started](#getting-started)
 2. [Features](#features)
-3. [Screenshots](#screenshots)
+3. [Demo Video](#demo-videos)
 4. [Dependencies](#dependencies)
 5. [Setup and Installation](#setup-and-installation)
 6. [Usage](#usage)
@@ -42,10 +42,18 @@ To get started with the Meals To Go App, follow the instructions in this readme.
 - Users can take a picture using the camera and set it as their profile picture.
 - Provides a logout button for users to log out from the app.
 
-## Demo Video
+## Demo Videos
 
 
-https://github.com/ssifu/meals-to-go/assets/63223565/de975304-be5d-4c60-bb35-96a7992770ed
+https://github.com/ssifu/meals-to-go/assets/63223565/a7c9f693-1b79-4739-b5ce-e7ba14a38f6e
+
+
+
+
+https://github.com/ssifu/meals-to-go/assets/63223565/69f5e6f6-3b74-41eb-85f1-bed897c9f995
+
+
+
 
 
 ## Dependencies
