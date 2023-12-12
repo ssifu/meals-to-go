@@ -66,12 +66,12 @@ https://github.com/ssifu/meals-to-go/assets/63223565/69f5e6f6-3b74-41eb-85f1-bed
 
 1. Clone the repository.
    ```bash
-   git clone https://github.com/your-username/react-native-restaurant-explorer.git
+   git clone https://github.com/ssifu/meals-to-go.git
    ```
 
 2. Install dependencies.
    ```bash
-   cd react-native-restaurant-explorer
+   cd meals-to-go
    npm install
    ```
 
