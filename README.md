@@ -4,16 +4,11 @@ Welcome to the Meals To Go App repository! This mobile app allows users to explo
 
 ## Table of Contents
 
-1. [Getting Started](#getting-started)
-2. [Features](#features)
-3. [Demo Video](#demo-videos)
-4. [Dependencies](#dependencies)
-5. [Setup and Installation](#setup-and-installation)
-6. [Usage](#usage)
-
-## Getting Started
-
-To get started with the Meals To Go App, follow the instructions in this readme. Make sure you have all the necessary dependencies installed.
+1. [Features](#features)
+2. [Demo Video](#demo-videos)
+3. [Dependencies](#dependencies)
+4. [Setup and Installation](#setup-and-installation)
+5. [Usage](#usage)
 
 ## Features
 
